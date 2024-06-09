@@ -1,0 +1,26 @@
+{% extends 'system-html/index.html' %}
+
+{% block content %}
+<div id="search-form-container">
+    {% if error %}
+        <div class="alert alert-danger" id="error-message" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'search' %}" onsubmit="loadingMessage()">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nickname" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Search</button>
+    </form>
+</div>
+
+<div id="loading-message" class="loading-container" style="display:none;">
+    <div class="loader"></div>
+    <h3 style="color:white;">Searching...</h3>
+</div>
+
+
+{% endblock content %}

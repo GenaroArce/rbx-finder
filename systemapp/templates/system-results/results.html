@@ -1,0 +1,134 @@
+{% extends 'system-html/search.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% else %}
+        <div class="card-results">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <img src="{{ avatar_url }}" alt="{{ nickname }}" class="img-fluid rounded-circle" style="width: 200px; height: 200px; margin-top: 20px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="info-row">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <strong>Nickname</strong>
+                                <p>{{ nickname }}</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-id-card"></i>
+                            <div>
+                                <strong>Display Name</strong>
+                                <p>{{ display_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Creation Date</strong>
+                                <p>{{ created|slice:":10" }}</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-id-badge"></i>
+                            <div>
+                                <strong>ID</strong>
+                                <p>{{ id }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <i class="fas fa-ban"></i>
+                            <div>
+                                <strong>Banned</strong>
+                                <p>{{ is_banned|yesno:"Yes,No" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-item" style="width: 100%;">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Description</strong>
+                                <p>{{ description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    .card-results {
+        position: relative;
+        width: 900px;
+        background: rgb(24, 24, 24);
+        background: linear-gradient(137deg, rgb(24, 24, 24) 0%, rgba(36, 36, 36, 1) 100%);
+        transition: 0.3s ease;
+        border-radius: 15px;
+        filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.5));
+        color: #fff;
+        padding: 20px;
+        margin: auto;
+        font-family: Arial, sans-serif;
+    }
+
+    .card-results .row {
+        display: flex;
+        align-items: center;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        width: 48%;
+    }
+
+    .info-item i {
+        margin-right: 10px;
+        font-size: 1.5rem;
+    }
+
+    .info-item div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-item strong {
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    .info-item p {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    .card-results:hover {
+        filter: drop-shadow(0px 0px 30px rgba(0, 0, 0, 1));
+    }
+</style>
+
+{% endblock content %}
